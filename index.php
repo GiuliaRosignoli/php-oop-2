@@ -2,8 +2,18 @@
 
 
 class Book {
+public $title;
+public $author;
+public $ISBN;
+public $genre;
 
+// Constructor
+function __construct($author){
+    $this->author = $author;
 }
+
+
+} // Book class
 
 class Non_fiction {
 
@@ -12,6 +22,12 @@ class Non_fiction {
 class fiction {
 
 }
+
+
+$The_Picture_of_Dorian_Gray = new Book('Oscar Wilde');
+echo '<p> This book was written by </p>' . $The_Picture_of_Dorian_Gray->author . '<br>';
+
+
 
 class Customer {
     // Properties
@@ -43,12 +59,13 @@ class Customer {
     }
 
 
-}
+} // Customer class
+
 
 // Instance
 
 $user_1 = new Customer();
-echo $user_1->id_user . '<br>';
+// echo $user_1->id_user . '<br>';
 $user_1-> introduceYourself() ;
 $user_1->membershipDet();
 
