@@ -23,9 +23,11 @@ class fiction {
 
 }
 
+// instances
 
+//  1st Book instance
 $The_Picture_of_Dorian_Gray = new Book('Oscar Wilde');
-echo '<p> This book was written by </p>' . $The_Picture_of_Dorian_Gray->author . '<br>';
+echo 'This book was written by' . ' ' . $The_Picture_of_Dorian_Gray->author . '<br>';
 
 
 
@@ -62,11 +64,12 @@ class Customer {
 } // Customer class
 
 
-// Instance
+// Instances
 
 $user_1 = new Customer();
 // echo $user_1->id_user . '<br>';
-$user_1-> introduceYourself() ;
+$user_1-> introduceYourself();
+echo '<br>';
 $user_1->membershipDet();
 
 
