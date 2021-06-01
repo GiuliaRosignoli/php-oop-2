@@ -6,6 +6,7 @@ public $title;
 public $author;
 public $ISBN;
 public $genre;
+public $price;
 
 // Constructor
 function __construct($author){
@@ -21,14 +22,31 @@ class Non_fiction extends Book {
         $this->genre = $genre;
     }
 
-}
+    // Methods
+    public function discountApplied($perc){
+        $discount = $this->price - ($this->price * $perc /100 );
+        return number_format($discount, 2);
+    }
 
-class fiction extends Book {
+    
+} // Non-fiction class extends Book ends here
+
+
+class Fiction extends Book {
     function __construct($author, $genre){
         parent::__construct($author);
         $this->genre = $genre;
     }
-}
+
+    // Methods
+    public function discountApplied($perc){
+        $discount = $this->price - ($this->price * $perc /100 );
+        return number_format($discount, 2);
+    } 
+
+} // Fiction class extends Book ends here
+
+
 
 // instances
 
@@ -41,6 +59,16 @@ $Nineteen_Eighty_Four = new Book('George Orwell');
 echo 'This book was written by' . ' ' . $Nineteen_Eighty_Four->author . '<br>';
 
 
+
+//Non-fiction
+
+$The_Second_Sex = new Non_fiction('Simone de Beauvoir', 'philosophy');
+$price = 20;
+echo 'This book was written by' . ' ' . $The_Second_Sex->author . '<br>';
+echo 'The reduced price is' . ' ' . $The_Second_Sex->discountApplied(10) . '<br>';
+
+
+// Next class Customer
 class Customer {
     // Properties
     public $id_user = 001;
@@ -49,7 +77,11 @@ class Customer {
     protected $membership = ' (Date to be inserted)';
 
     // Public functions
+
+   
+
     public function introduceYourself(){
+        echo '<br>';
         echo 'Hello, I am ';
 
         $this->printCustomerFullName();
