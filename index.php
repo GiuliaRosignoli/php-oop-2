@@ -18,7 +18,7 @@ class Customer {
     public $id_user = 001;
     protected $first_name = 'Giulia';
     protected $lastname = ' Rosignoli';
-    protected $membership = 'date to be inserted';
+    protected $membership = 'Date to be inserted';
 
 
     public function introduceYourself(){
