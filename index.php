@@ -15,12 +15,19 @@ function __construct($author){
 
 } // Book class
 
-class Non_fiction {
+class Non_fiction extends Book {
+    function __construct($author, $genre){
+        parent::__construct($author);
+        $this->genre = $genre;
+    }
 
 }
 
-class fiction {
-
+class fiction extends Book {
+    function __construct($author, $genre){
+        parent::__construct($author);
+        $this->genre = $genre;
+    }
 }
 
 // instances
@@ -29,6 +36,9 @@ class fiction {
 $The_Picture_of_Dorian_Gray = new Book('Oscar Wilde');
 echo 'This book was written by' . ' ' . $The_Picture_of_Dorian_Gray->author . '<br>';
 
+// 2nd Book instance
+$Nineteen_Eighty_Four = new Book('George Orwell');
+echo 'This book was written by' . ' ' . $Nineteen_Eighty_Four->author . '<br>';
 
 
 class Customer {
