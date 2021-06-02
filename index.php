@@ -14,6 +14,7 @@ protected $discount;
 // Constructor
 function __construct($author, $price){
     $this->author = $author;
+    $this->price = $price;
 }
 
 // Methods
@@ -21,12 +22,12 @@ function __construct($author, $price){
 
 // Calc discount
 protected function getADiscount($perc){
-    $this->$discount = $this->price - ($this->price * $perc / 100 );
+    $this->discount = $this->price - ($this->price * $perc / 100 );
     }
 
-public function discountApplied(){
+public function discountApplied($perc){
     $this->getADiscount($perc);
-    return number_format($discount, 2);
+    return $this->discount = number_format($this->discount, 2);
 }
     
 
@@ -83,7 +84,7 @@ echo 'This book was written by' . ' ' . $The_Second_Sex->author . '<br>';
 // Next class Customer
 class Customer {
     // Properties
-    public $id_user = 001;
+    public $id_user = 1;
     protected $first_name = 'Giulia';
     protected $lastname = ' Rosignoli';
     protected $membership = ' (Date to be inserted)';
