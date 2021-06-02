@@ -7,42 +7,52 @@ public $author;
 public $ISBN;
 public $genre;
 public $price;
+protected $discount;
+
+
 
 // Constructor
-function __construct($author){
+function __construct($author, $price){
     $this->author = $author;
 }
 
+// Methods
+
+
+// Calc discount
+protected function getADiscount($perc){
+    $this->$discount = $this->price - ($this->price * $perc / 100 );
+    }
+
+public function discountApplied(){
+    $this->getADiscount($perc);
+    return number_format($discount, 2);
+}
+    
 
 } // Book class
 
+
+
 class Non_fiction extends Book {
-    function __construct($author, $genre){
-        parent::__construct($author);
+    // Attributes
+
+    // Constructor - new item added
+    function __construct($author, $price, $genre){
+        parent::__construct($author, $price);
         $this->genre = $genre;
     }
-
-    // Methods
-    public function discountApplied($perc){
-        $discount = $this->price - ($this->price * $perc /100 );
-        return number_format($discount, 2);
-    }
-
     
 } // Non-fiction class extends Book ends here
 
 
 class Fiction extends Book {
-    function __construct($author, $genre){
-        parent::__construct($author);
+    // Constructor - new item added 
+        function __construct($author, $price, $genre){
+        parent::__construct($author, $price);
         $this->genre = $genre;
     }
-
-    // Methods
-    public function discountApplied($perc){
-        $discount = $this->price - ($this->price * $perc /100 );
-        return number_format($discount, 2);
-    } 
+    
 
 } // Fiction class extends Book ends here
 
@@ -50,22 +60,24 @@ class Fiction extends Book {
 
 // instances
 
-//  1st Book instance
-$The_Picture_of_Dorian_Gray = new Book('Oscar Wilde');
+//  1st Fiction Book instance
+$The_Picture_of_Dorian_Gray = new Fiction('Oscar Wilde', 12, 'fiction');
 echo 'This book was written by' . ' ' . $The_Picture_of_Dorian_Gray->author . '<br>';
+echo  'The reduced price of the item is €' . ' ' . $The_Picture_of_Dorian_Gray->discountApplied(10) . '<br>';
+echo '<br>';
 
-// 2nd Book instance
-$Nineteen_Eighty_Four = new Book('George Orwell');
+// 2nd Fiction Book instance
+$Nineteen_Eighty_Four = new Fiction('George Orwell', 10, 'fiction');
 echo 'This book was written by' . ' ' . $Nineteen_Eighty_Four->author . '<br>';
+echo '<br>';
 
 
+//Non-fiction Book
 
-//Non-fiction
-
-$The_Second_Sex = new Non_fiction('Simone de Beauvoir', 'philosophy');
+$The_Second_Sex = new Non_fiction('Simone de Beauvoir', 20, 'philosophy');
 $price = 20;
 echo 'This book was written by' . ' ' . $The_Second_Sex->author . '<br>';
-echo 'The reduced price is' . ' ' . $The_Second_Sex->discountApplied(10) . '<br>';
+
 
 
 // Next class Customer
