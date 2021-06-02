@@ -95,6 +95,7 @@ class Customer {  //general features
     public $age;
     protected $membership = ' (Date to be inserted)';
     protected $discount = 0;
+    public $extraDiscount;
 
     // Constructor 
     function __construct($id_user, $age){
@@ -127,6 +128,13 @@ class Customer {  //general features
         return $this->discount;
     }
 
+    public function applyNewDiscount(){
+        if($this->age >= 30){
+          return  $this->extraDiscount = 10;
+        } else {
+            return 'Please, just pay. 0 ';
+        }
+    }
 
     // Protected methods
     protected function printCustomerFullName(){
@@ -170,10 +178,10 @@ echo '<br>';
 $user_1->membershipDet();
 echo '<br>';
 $user_1->getADiscount();
-echo 'Different categories are foreseen within the competition, according to the age of the participants: you are' . ' ' . $user_1->age . ' , therefore' . ' ' . $user_1->getADiscount();
+echo 'Different categories are foreseen within the competition, according to the age of the participants: you are' . ' ' . $user_1->age . ' , therefore' . ' ' . $user_1->getADiscount() . ' ' . 'You got an extra' . ' ' . $user_1->applyNewDiscount() . '% off';
 
 
 
 
-
+ 
 ?>
