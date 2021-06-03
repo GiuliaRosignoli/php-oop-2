@@ -63,6 +63,8 @@ class Fiction extends Book {
 
 //  1st Fiction Book instance
 $The_Picture_of_Dorian_Gray = new Fiction('Oscar Wilde', 12, 'fiction');
+$The_Picture_of_Dorian_Gray->title = 'The Picture of Dorian_Gray';
+var_dump($The_Picture_of_Dorian_Gray);
 echo 'This book was written by' . ' ' . $The_Picture_of_Dorian_Gray->author . '.' . '<br>';
 echo 'The price of the item is € ' .' ' . $The_Picture_of_Dorian_Gray->price . '.' . '<br>';
 echo  'The reduced price of the item is €' . ' ' . $The_Picture_of_Dorian_Gray->discountApplied(10) . '.' . '<br>';
@@ -70,6 +72,8 @@ echo '<br>';
 
 // 2nd Fiction Book instance
 $Nineteen_Eighty_Four = new Fiction('George Orwell', 10, 'fiction');
+$Nineteen_Eighty_Four->title = '1984 Nineteen eighty four';
+var_dump($Nineteen_Eighty_Four);
 echo 'This book was written by' . ' ' . $Nineteen_Eighty_Four->author . '.' . '<br>';
 echo 'The price of the item is € ' .' ' . $Nineteen_Eighty_Four->price . '.' . '<br>';
 echo  'The reduced price of the item is €' . ' ' . $Nineteen_Eighty_Four->discountApplied(15) . '.' . '<br>';
@@ -79,6 +83,8 @@ echo '<br>';
 //Non-fiction Book
 
 $The_Second_Sex = new Non_fiction('Simone de Beauvoir', 20, 'philosophy');
+$The_Second_Sex->title = 'The Second Sex';
+var_dump($The_Second_Sex);
 $price = 20;
 echo 'This book was written by' . ' ' . $The_Second_Sex->author . '.' . '<br>';
 echo 'The price of the item is € ' .' ' . $The_Second_Sex->price . '.' . '<br>';
