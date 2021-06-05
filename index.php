@@ -114,7 +114,7 @@ class Customer {  //general features
         if(is_numeric($this->age) && $this->age > 0 && $this->age < 120 ){
             $this->age = $age;
         }  elseif(!is_numeric($age) || $age > 120) {
-            throw new Exception($age . 'This is not a valid value');
+            throw new Exception($age . 'this is not a valid value. Please insert a valid one.');
             } 
     } // setAge
 
