@@ -95,22 +95,33 @@ echo  'The reduced price of the item is €' . ' ' . $The_Second_Sex->discountAp
 // Next class Customer
 class Customer {  //general features
     // Properties
-    public $id_user = 1;
+    public $id_user;
     protected $first_name = 'Jane';
     protected $lastname = 'Doe';
-    public $age;
+    protected $age;
     protected $membership = ' (Date to be inserted)';
     protected $discount = 0;
     public $extraDiscount;
 
     // Constructor 
-    function __construct($id_user, $age){
+    function __construct($id_user){
     $this->id_user = $id_user;
-    $this->age = $age;
     }
 
     // Public methods
 
+    public function setAge($age){
+        if(is_numeric($this->age) && $this->age > 0 && $this->age < 120 ){
+            $this->age = $age;
+        }  elseif(!is_numeric($age) || $age > 120) {
+            throw new Exception($age . 'This is not a valid value');
+            } 
+    } // setAge
+
+    public function getAge(){
+        return $this->age = 35;
+    }
+  
     public function introduceYourself(){
         echo '<br>';
         echo 'Hello, I am ';
@@ -130,8 +141,10 @@ class Customer {  //general features
     }
 
     public function getADiscount(){
-        $this->setExtraDiscount();
-        return $this->discount;
+        if(is_numeric($this->age) && $this->age < 120){
+            $this->setExtraDiscount();
+            return $this->discount;
+        } 
     }
 
     public function applyNewDiscount(){
@@ -151,14 +164,19 @@ class Customer {  //general features
         echo $this->membership;
     }
 
+ 
+
+
 } // Customer class ends here
 
 
 class Over30 extends Customer {
 // Constructor
-function __construct($id_user, $age, $name){
-    parent::__construct($id_user, $age);
+function __construct($id_user, $name){
+    parent::__construct($id_user);
     $this->name = $name;
+
+ 
 }
 
 
@@ -166,8 +184,8 @@ function __construct($id_user, $age, $name){
 
 class Under30 extends Customer {
 // Constructor
-function __construct($id_user, $age, $name){
-    parent::__construct($id_user, $age);
+function __construct($id_user, $name){
+    parent::__construct($id_user);
     $this->name = $name;
 }
 
@@ -177,17 +195,64 @@ function __construct($id_user, $age, $name){
 
 // Instances
 
-$user_1 = new Customer(1, 35);
+$user_1 = new Over30 (1, 'Jane Doe');
 // echo $user_1->id_user . '<br>';
 $user_1-> introduceYourself();
 echo '<br>';
 $user_1->membershipDet();
 echo '<br>';
 $user_1->getADiscount();
-echo 'Different categories are foreseen within the competition, according to the age of the participants: you are' . ' ' . $user_1->age . ' , therefore' . ' ' . $user_1->getADiscount() . ' ' . 'You got an extra' . ' ' . $user_1->applyNewDiscount() . '% off';
+
+echo 'Different categories are foreseen within the competition, according to the age of the participants: you are' . ' ' . $user_1->getAge() . ' , therefore' . ' ' . $user_1->getADiscount() . ' ' . 'You got an extra' . ' ' . $user_1->applyNewDiscount() . '% off';
+
+
+
+// ******* Try/catch exceptions ******* 
+try {
+$user_1->setAge(35);
+// echo $user_1->getAge();
+} catch (Exception $e) {
+    echo 'Warning: ' . $e->getMessage();
+}
+
+
+
+
+
+
 
 
 
 
  
+
+/*
+
+class NewUser {
+    //attributes
+    private $age;
+
+
+// Methods
+public function setAgesecond($age){
+    if(is_numeric($age) && $age > 0 && $age < 120){
+        $this->age = $age;
+    } elseif(!is_numeric($age)){
+        throw new Exception($age . 'Not a valid value');
+    }
+}
+
+public function getAgesecond(){
+    return $this->age;
+}
+
+} // newuser
+
+// Instances
+
+$newUser1 = new NewUser();
+$newUser1->setAgesecond(50);
+echo $newUser1->getAgesecond(); */
+
+
 ?>
