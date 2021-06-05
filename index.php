@@ -9,8 +9,6 @@ public $genre;
 public $price;
 protected $discount;
 
-
-
 // Book Constructor
 function __construct($author, $price){
     $this->author = $author;
@@ -18,7 +16,6 @@ function __construct($author, $price){
 }
 
 // Methods
-
 
 // Calc discount
 protected function getADiscount($perc){
@@ -28,9 +25,8 @@ protected function getADiscount($perc){
 public function discountApplied($perc){
     $this->getADiscount($perc);
     return $this->discount = number_format($this->discount, 2);
-}
+    }
     
-
 } // Book class ends here
 
 
@@ -54,7 +50,6 @@ class Fiction extends Book {
         $this->genre = $genre;
     }
     
-
 } // Fiction class extends Book ends here
 
 
@@ -78,7 +73,6 @@ echo 'This book was written by' . ' ' . $Nineteen_Eighty_Four->author . '.' . '<
 echo 'The price of the item is € ' .' ' . $Nineteen_Eighty_Four->price . '.' . '<br>';
 echo  'The reduced price of the item is €' . ' ' . $Nineteen_Eighty_Four->discountApplied(15) . '.' . '<br>';
 echo '<br>';
-
 
 //Non-fiction Book
 
@@ -164,9 +158,6 @@ class Customer {  //general features
         echo $this->membership;
     }
 
- 
-
-
 } // Customer class ends here
 
 
@@ -175,21 +166,17 @@ class Over30 extends Customer {
 function __construct($id_user, $name){
     parent::__construct($id_user);
     $this->name = $name;
-
- 
-}
-
+    }
 
 } // class Over30 ends here
+
 
 class Under30 extends Customer {
 // Constructor
 function __construct($id_user, $name){
     parent::__construct($id_user);
     $this->name = $name;
-}
-
-
+    }
 } // class Under30 ends here
 
 
@@ -222,9 +209,6 @@ $user_1->setAge(35);
 
 
 
-
-
- 
 
 /*
 
